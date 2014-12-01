@@ -1,0 +1,6 @@
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\obj\Release\DataMiner.csprojResolveAssemblyReference.cache
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\bin\Release\DataMiner.exe.config
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\bin\Release\DataMiner.exe
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\bin\Release\DataMiner.pdb
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\obj\Release\DataMiner.exe
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\obj\Release\DataMiner.pdb
