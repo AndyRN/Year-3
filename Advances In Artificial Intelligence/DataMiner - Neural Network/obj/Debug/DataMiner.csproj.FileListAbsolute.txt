@@ -1,0 +1,12 @@
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\bin\Debug\DataMiner.exe.config
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\bin\Debug\DataMiner.exe
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\bin\Debug\DataMiner.pdb
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\obj\Debug\DataMiner.csprojResolveAssemblyReference.cache
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\obj\Debug\DataMiner.exe
+D:\Uni - Computer Science\AiA\Assignment\DataMiner\obj\Debug\DataMiner.pdb
+D:\Uni - Computer Science\AiA\Assignment\DataMiner - Neural Network\bin\Debug\DataMiner.exe.config
+D:\Uni - Computer Science\AiA\Assignment\DataMiner - Neural Network\obj\Debug\DataMiner.exe
+D:\Uni - Computer Science\AiA\Assignment\DataMiner - Neural Network\obj\Debug\DataMiner.pdb
+D:\Uni - Computer Science\AiA\Assignment\DataMiner - Neural Network\bin\Debug\DataMiner.exe
+D:\Uni - Computer Science\AiA\Assignment\DataMiner - Neural Network\bin\Debug\DataMiner.pdb
+D:\Uni - Computer Science\AiA\Assignment\DataMiner - Neural Network\obj\Debug\DataMiner.csprojResolveAssemblyReference.cache

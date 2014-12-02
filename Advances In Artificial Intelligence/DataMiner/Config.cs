@@ -7,13 +7,13 @@ namespace DataMiner
     {
         public static readonly int NumberOfRuns = 10;
 
-        public static readonly int PopulationSize = 2000;
-        public static readonly int Generations = 3000;
-        public static readonly int TournamentSize = 2;
+        public static readonly int PopulationSize = 100;
+        public static readonly int MaxGenerations = 5000;
+        public static readonly int TournamentSize = 10;
         public static readonly double CrossoverProbability = 90;
         public static readonly double MutationProbability = 0.83;
         public static readonly double WildcardProbability = 50;
-        public static readonly int RulesPerIndividual = 9;
+        public static readonly int RulesPerIndividual = 10;
 
         public static int DataSize;
         public static int ChromosomeLength;

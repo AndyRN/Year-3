@@ -11,9 +11,11 @@ namespace DataMiner
 {
     public class Program
     {
+        private static List<double> Generations = new List<double>();
+
         public static void Main(string[] args)
         {
-            Console.SetWindowSize(50, 15);
+            Console.SetWindowSize(50, 13);
 
             Init(Selection());
 
@@ -65,7 +67,7 @@ namespace DataMiner
                     dataFilePath = "data3.txt";
                     Config.DataFileName = "data3";
                     Config.DataSize = 2000;
-                    Config.RuleLength = 43;
+                    Config.RuleLength = 7;
                     break;
                 default:
                     break;
@@ -85,7 +87,7 @@ namespace DataMiner
         private static void PrepareData()
         {
             List<string> shuffledData = new List<string>(Config.FullData);
-            ListShuffler.Shuffle(shuffledData);
+            shuffledData.Shuffle();
 
             int range = (int)(shuffledData.Count * 0.8);
 
@@ -104,17 +106,19 @@ namespace DataMiner
             List<Individual> population = pController.GeneratePopulation();
             population = pController.CalculateFitness(population);
 
-            Console.WriteLine(string.Format("\n\n[Initial Population]\n\nTotal fitness: {0}\nBest fitness: {1}\nMean fitness : {2}",
-                pController.GetTotalFitness(population),
-                pController.GetBestFitness(population),
-                pController.GetMeanFitness(population)));
+            Console.WriteLine(string.Format("\n\n[Initial Population]\n\nBest fitness: {0} / {1} ({2}%)\nMean fitness : {3}",
+                    pController.GetBestFitness(population), Config.LearningData.Count, ((double)pController.GetBestFitness(population) / (double)Config.LearningData.Count) * 100,
+                    pController.GetMeanFitness(population)));
 
             // Get the current best solution.
             Individual bestSolution = pController.GetFittestIndividual(population);
 
             // Run for however many generations has been set.
-            for (int i = 1; i <= Config.Generations; i++)
+            int generationsTaken = 0;
+            for (int i = 1; i <= Config.MaxGenerations; i++)
             {
+                generationsTaken = i;
+
                 Console.WriteLine("\n\n-----");
                 Console.WriteLine(string.Format("\n\n- Generation {0}", i));
 
@@ -131,15 +135,14 @@ namespace DataMiner
                 // If the best solution was lost, replace the worst solution with it.
                 if (pController.GetBestFitness(population) < bestSolution.Fitness)
                 {
-                    population = pController.ReplaceWorstIndividual(population, bestSolution);
+                    population = pController.ReplaceRandomIndividual(population, bestSolution);
                 }
                 else if (pController.GetBestFitness(population) > bestSolution.Fitness)
                 {
                     bestSolution = pController.GetFittestIndividual(population);
                 }
 
-                Console.WriteLine(string.Format("\n\nTotal fitness: {0}\nBest fitness: {1} / {2} ({3}%)\nMean fitness : {4}",
-                    pController.GetTotalFitness(population),
+                Console.WriteLine(string.Format("\n\nBest fitness: {0} / {1} ({2}%)\nMean fitness : {3}",
                     pController.GetBestFitness(population), Config.LearningData.Count, ((double)pController.GetBestFitness(population) / (double)Config.LearningData.Count) * 100,
                     pController.GetMeanFitness(population)));
 
@@ -156,6 +159,8 @@ namespace DataMiner
                 }
             }
 
+            Generations.Add(generationsTaken);
+
             Console.WriteLine("\n\n\\\\\\ Finished Learning ///");
 
             string outputFilePath = string.Format("{0}\\{1}.{2}.csv",
@@ -167,7 +172,7 @@ namespace DataMiner
 
             File.WriteAllText(Config.RunFile.FullName, csv.ToString());
 
-            return bestSolution;
+            return pController.GetFittestIndividual(population);
         }
 
         private static double RunTestingPhase(Individual bestSolution)
@@ -220,13 +225,14 @@ namespace DataMiner
         {
             StringBuilder csv = new StringBuilder();
 
-            csv.Append(string.Format("{0},{1},{2},{3},{4},{5},{6}",
+            csv.Append(string.Format("{0},{1},{2},{3},{4},{5},{6},{7}",
                 Config.PopulationSize,
-                Config.Generations,
+                Config.MaxGenerations,
                 Config.TournamentSize,
                 Config.CrossoverProbability,
                 Config.MutationProbability,
                 results.Average(),
+                Generations.Average(),
                 Environment.NewLine));
 
             FileInfo summaryFile = new FileInfo(string.Format("D:\\Uni - Computer Science\\AiA\\Assignment\\Results\\{0}\\Summary.csv", Config.DataFileName));
