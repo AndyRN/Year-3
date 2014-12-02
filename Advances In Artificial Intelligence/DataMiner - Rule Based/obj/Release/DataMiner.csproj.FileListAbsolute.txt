@@ -10,3 +10,9 @@ D:\Uni - Computer Science\AiA\Assignment\DataMiner - Rule Based\obj\Release\Data
 D:\Uni - Computer Science\AiA\Assignment\DataMiner - Rule Based\bin\Release\DataMiner.exe
 D:\Uni - Computer Science\AiA\Assignment\DataMiner - Rule Based\bin\Release\DataMiner.pdb
 D:\Uni - Computer Science\AiA\Assignment\DataMiner - Rule Based\obj\Release\DataMiner.csprojResolveAssemblyReference.cache
+D:\Coding\Year-3\Advances In Artificial Intelligence\DataMiner - Rule Based\bin\Release\DataMiner.exe.config
+D:\Coding\Year-3\Advances In Artificial Intelligence\DataMiner - Rule Based\obj\Release\DataMiner.exe
+D:\Coding\Year-3\Advances In Artificial Intelligence\DataMiner - Rule Based\obj\Release\DataMiner.pdb
+D:\Coding\Year-3\Advances In Artificial Intelligence\DataMiner - Rule Based\bin\Release\DataMiner.exe
+D:\Coding\Year-3\Advances In Artificial Intelligence\DataMiner - Rule Based\bin\Release\DataMiner.pdb
+D:\Coding\Year-3\Advances In Artificial Intelligence\DataMiner - Rule Based\obj\Release\DataMiner.csprojResolveAssemblyReference.cache
