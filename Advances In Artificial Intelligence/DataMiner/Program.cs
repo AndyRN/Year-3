@@ -172,7 +172,7 @@ namespace DataMiner
 
             File.WriteAllText(Config.RunFile.FullName, csv.ToString());
 
-            return pController.GetFittestIndividual(population);
+            return bestSolution;
         }
 
         private static double RunTestingPhase(Individual bestSolution)
