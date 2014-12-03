@@ -2,3 +2,5 @@ DataMiner = Data set 1 & 2
 DataMiner - Neural Network = NN approach to data set 3
 DataMiner - Rule Based = RB approach to data set 3
 DataMiner - Experimental = Final approach utilising rounding for data set 3
+
+Patterns = The three optimal rule-set patterns for the data sets.
