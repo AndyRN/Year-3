@@ -1,9 +1,5 @@
 package Models;
 
-/**
- *
- * @author Andy
- */
 public class Medicine {
 
     private int id;

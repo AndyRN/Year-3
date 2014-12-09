@@ -1,9 +1,5 @@
 package Models;
 
-/**
- *
- * @author Andy
- */
 public class Patient {
     private int id;
     private String name;

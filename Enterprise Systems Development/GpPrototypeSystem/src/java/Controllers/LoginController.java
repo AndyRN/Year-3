@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import Classes.AccountHandler;
-import Classes.HomeHandler;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,10 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Andy
- */
 public class LoginController extends HttpServlet {
 
     /**
@@ -37,10 +26,14 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         AccountHandler accHandler = new AccountHandler();
 
+        // Attempt to login.
         int success = accHandler.Login(request);
+
+        // If the login was successful, redirect to the home page.
         if (success == 1) {
             response.sendRedirect(request.getContextPath() + "/Front?direction=Home");
         } else {
+            // If not, remain on the login page.
             RequestDispatcher view = request.getRequestDispatcher("LoginPage.jsp");
             view.forward(request, response);
         }

@@ -15,6 +15,7 @@ public class BillDao {
     public Bill getPatientBill(int id) throws SQLException {
         Bill invoice = null;
 
+        // Execute SQL query in order to find all patient bills.
         ResultSet billSet = dbm.getResultSet("SELECT * from bills WHERE patient_id = " + id + " AND paid = false");
         if (billSet != null) {
             while (billSet.next()) {
@@ -34,6 +35,7 @@ public class BillDao {
     public void addBill(Bill bill) throws SQLException {
         PreparedStatement pState = dbm.getPreparedStatement("INSERT INTO bills (patient_id, consultation_fee) VALUES (?, ?)");
 
+        // Add the relevant information to the prepared statement.
         pState.setInt(1, bill.getPatientId());
         pState.setInt(2, bill.getConsultationFee());
 
@@ -43,34 +45,39 @@ public class BillDao {
     public void addBillMedicine(BillMedicine billMedicine) throws SQLException {
         PreparedStatement pState = dbm.getPreparedStatement("INSERT INTO bills_medicines (bill_id, medicine_id, quantity) VALUES (?, ?, ?)");
 
+        // Add the relevant information to the prepared statement.
         pState.setInt(1, billMedicine.getBillId());
         pState.setInt(2, billMedicine.getMedicineId());
         pState.setInt(3, billMedicine.getQuantity());
 
         execute(pState);
     }
-    
+
     public ArrayList<BillMedicine> getPatientBillMedicines(int id) throws SQLException {
         ArrayList<BillMedicine> billMedicineList = new ArrayList<>();
-        
+
+        // Execute SQL query in order to find all medicines added to the bill.
         ResultSet billMedicineSet = dbm.getResultSet("SELECT * from bills_medicines WHERE bill_id = " + id);
         if (billMedicineSet != null) {
             while (billMedicineSet.next()) {
                 BillMedicine billMedicine = new BillMedicine();
                 billMedicine.setBillId(billMedicineSet.getInt("bill_id"));
-                billMedicine.setMedicineId(billMedicineSet.getInt("medicine_id"));                
+                billMedicine.setMedicineId(billMedicineSet.getInt("medicine_id"));
                 billMedicine.setQuantity(billMedicineSet.getInt("quantity"));
+
+                // Add each found medicine to the medicine list.
                 billMedicineList.add(billMedicine);
             }
             dbm.disconnectFromDB();
         }
-        
+
         return billMedicineList;
     }
-    
-    public void updateBill(int fee, int patient) throws SQLException {        
+
+    public void updateBill(int fee, int patient) throws SQLException {
         PreparedStatement pState = dbm.getPreparedStatement("UPDATE bills SET consultation_fee = ? WHERE patient_id = ?");
 
+        // Add the relevant information to the prepared statement.
         pState.setInt(1, fee);
         pState.setInt(2, patient);
 
@@ -80,6 +87,7 @@ public class BillDao {
     public void payBill(int billId) throws SQLException {
         PreparedStatement pState = dbm.getPreparedStatement("UPDATE bills SET paid = ? WHERE id = ?");
 
+        // Add the relevant information to the prepared statement.
         pState.setBoolean(1, true);
         pState.setInt(2, billId);
 

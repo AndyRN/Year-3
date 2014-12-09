@@ -1,9 +1,5 @@
 package Models;
 
-/**
- *
- * @author Andy
- */
 public class BillMedicine {
     private int id;
     private int billId;

@@ -11,13 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Andy
- */
 public class LoginFilter implements Filter {
-    
-   /**
+
+    /**
      * @param filterConfig
      * @throws javax.servlet.ServletException
      * @see Filter#init(FilterConfig)
@@ -41,10 +37,12 @@ public class LoginFilter implements Filter {
         Boolean authenticated = false;
         HttpSession session = request.getSession();
 
+        // If the user is logged in, set authenticated to true.
         if (session.getAttribute("user") != null) {
             authenticated = true;
         }
-        
+
+        // In the case that they aren't, redirect the user to the login page.
         if (authenticated != true) {
             response.sendRedirect(request.getContextPath() + "/LoginPage.jsp");
         } else {
